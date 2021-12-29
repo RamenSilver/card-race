@@ -68,6 +68,12 @@ const turn_over_side_deck = (min_pos) => {
   }
 }
 
+const refresh_table = () => {
+  $("#board tbody").children("tr").forEach((element, index) => {
+    if (index != 0) continue;
+  })
+}
+
 // true 誰かがすでにゴール済
 // false まだ誰も未ゴール
 const is_goaled = () => {
