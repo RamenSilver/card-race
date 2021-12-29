@@ -38,6 +38,7 @@ $(document).keypress(function(event) {
     const min_pos = find_all_passed_line();
     turn_over_side_deck(min_pos);
     //refresh table
+    refresh_table();
   }
 
 });
@@ -66,6 +67,11 @@ const turn_over_side_deck = (min_pos) => {
       break;
     }
   }
+}
+
+const refresh_table = () => {
+  table_tr_list = $("#board tbody").children("tr");
+  console.log(table_tr_list);
 }
 
 // true 誰かがすでにゴール済
