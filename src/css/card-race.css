@@ -53,7 +53,8 @@ table td {
   border-style: dotted solid;
 }
 
-.startTr, .goalTr {
+.startTr,
+.goalTr {
   border: solid 2px #f5f5f5;
 }
 
@@ -61,7 +62,8 @@ table td {
   background: #3cb371;
 }
 
-.goalTr, .rankTr {
+.goalTr,
+.rankTr {
   background: #ffa500;
 }
 
@@ -88,17 +90,17 @@ img {
   animation-timing-function: ease;
 }
 
-@keyframes card-activeDuwn {
+@keyframes card-activeDown {
   100% {
     top: 90px;
   }
 }
 
-.card-activeDuwn {
+.card-activeDown {
   position: relative;
   left: 0px;
   top: 0px;
-  animation-name: card-activeDuwn;
+  animation-name: card-activeDown;
   animation-duration: 1s;
   animation-timing-function: ease;
 }
@@ -122,7 +124,8 @@ img {
   }
 }
 
-.front-sub, .back-sub {
+.front-sub,
+.back-sub {
   position: absolute;
   top: 0;
   left: 0;
@@ -169,14 +172,17 @@ img {
   padding: 0 75px;
 }
 
-.deck-card, .front-img, .back-img {
+.deck-card,
+.front-img,
+.back-img {
   position: absolute;
   top: 0;
   left: 75px;
   backface-visibility: hidden;
 }
 
-.front-img, .back-img {
+.front-img,
+.back-img {
   margin: 20px auto;
   width: 150px;
   height: 200px;
@@ -196,7 +202,8 @@ img {
   }
 }
 
-.front-img, .back-img {
+.front-img,
+.back-img {
   position: absolute;
   top: 0;
   left: 0;
