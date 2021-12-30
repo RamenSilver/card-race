@@ -82,6 +82,7 @@ const turn_over_side_deck = async(min_pos) => {
       $(`.sub-card:eq(${flip_card_index})`).html('<img class="front-sub" src="' + cards_on_side[i - 2].url + '">');
       cards_on_race[cards_on_side[i - 2].suit].pre_pos = cards_on_race[cards_on_side[i - 2].suit].pos;
       cards_on_race[cards_on_side[i - 2].suit].pos -= 1; //posは0未満にはならない
+      refresh_table();
       return;
 
     }
@@ -140,7 +141,7 @@ const flip_deck_card = (card) => {
     setTimeout(async() => {
       $(".flip").html('<img class="front-img" src="../../static/deck.jpg">');
       $(".flip").append('<img class="back-img" src="' + card.url + '">');
-      await wait_milliseconds(1000);
+      await wait_milliseconds(500);
       $(".flip").html("");
       $(".open").html('<img src="' + card.url + '">');
       resolve();
