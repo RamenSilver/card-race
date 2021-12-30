@@ -139,10 +139,9 @@ const wait_milliseconds = (mil_second) => {
 const flip_deck_card = (card) => {
   return new Promise(async(resolve) => {
     setTimeout(async() => {
-      $(".flip").html('<img class="front-img" src="../../static/deck.jpg">');
-      $(".flip").append('<img class="back-img" src="' + card.url + '">');
-      await wait_milliseconds(500);
-      $(".flip").html("");
+      $(".fake-flip").html('<img class="front-img" src="../../static/deck.jpg" /><img class="back-img" src="' + card.url + '" />').addClass("flip");
+      await wait_milliseconds(900);
+      $(".fake-flip").html("").removeClass("flip");
       $(".open").html('<img src="' + card.url + '">');
       resolve();
     }, 1300);
@@ -156,8 +155,6 @@ const get_rank = () => {
   rank_list.sort((left, right) => {
     return left.pos - right.pos;
   });
-  console.log(cards_on_race);
-  console.log(rank_list);
   rank_list.forEach((element, index) => {
     $(`th:nth-child(${element.suit})`).text(index + 1);
   })
