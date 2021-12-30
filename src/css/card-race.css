@@ -86,7 +86,7 @@ img {
   left: 0px;
   top: 0px;
   animation-name: card-activeUp;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-timing-function: ease;
 }
 
@@ -101,7 +101,7 @@ img {
   left: 0px;
   top: 0px;
   animation-name: card-activeDown;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-timing-function: ease;
 }
 
@@ -116,7 +116,7 @@ img {
 }
 
 .sub-card-active {
-  animation: sub-card-active 1s linear;
+  animation: sub-card-active 0.5s linear;
   transform-style: preserve-3d;
 }
 
@@ -132,7 +132,7 @@ img {
   top: 0;
   left: 0;
   right: 0;
-  margin: auto;
+  margin: 3px auto;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
@@ -194,10 +194,15 @@ img {
   height: 185px;
 }
 
+.fake-flip {
+  width: 1em;
+  margin-bottom: 1em;
+}
+
 .flip {
   width: 1em;
   margin-bottom: 1em;
-  animation: flip 1s linear;
+  animation: flip 0.5s linear;
   transform-style: preserve-3d;
   transform-origin: left top;
 }
