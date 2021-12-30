@@ -78,7 +78,7 @@ const turn_over_side_deck = async(min_pos) => {
       $(`.sub-card:eq(${flip_card_index})`).append('<img class="back-sub" src="' + cards_on_side[i - 2].url + '">')
       $(`.sub-card:eq(${flip_card_index})`).addClass("sub-card-active");
       //一秒待機
-      await wait_milliseconds(1000);
+      await wait_milliseconds(500);
       $(`.sub-card:eq(${flip_card_index})`).html('<img class="front-sub" src="' + cards_on_side[i - 2].url + '">');
       cards_on_race[cards_on_side[i - 2].suit].pre_pos = cards_on_race[cards_on_side[i - 2].suit].pos;
       cards_on_race[cards_on_side[i - 2].suit].pos -= 1; //posは0未満にはならない
@@ -96,11 +96,11 @@ const refresh_table = () => {
     const col = card.suit + 1;
     if (pos > pre_pos) {
       $(`#board tbody tr:nth-child(${pre_pos}) td:nth-child(${col}) img`).addClass("card-activeDown");
-      await wait_milliseconds(900);
+      await wait_milliseconds(400);
       $(`#board tbody tr:nth-child(${pre_pos}) td:nth-child(${col})`).html("");
     } else if (pos < pre_pos) {
       $(`#board tbody tr:nth-child(${pre_pos}) td:nth-child(${col}) img`).addClass("card-activeUp");
-      await wait_milliseconds(900);
+      await wait_milliseconds(400);
       $(`#board tbody tr:nth-child(${pre_pos}) td:nth-child(${col})`).html("");
     }
     $(`#board tbody tr:nth-child(${pos}) td:nth-child(${col})`).html('<img src="' + card.url + '">');
@@ -122,7 +122,7 @@ const flip_card = async(selector, className) => {
   //レンダリング
   selector.addClass(className);
   //1秒待機する
-  await wait_milliseconds(1000);
+  await wait_milliseconds(500);
   //カードを新しいポジションに移動させる
   //レンダリング
 }
@@ -140,11 +140,11 @@ const flip_deck_card = (card) => {
   return new Promise(async(resolve) => {
     setTimeout(async() => {
       $(".fake-flip").html('<img class="front-img" src="../../static/deck.jpg" /><img class="back-img" src="' + card.url + '" />').addClass("flip");
-      await wait_milliseconds(900);
+      await wait_milliseconds(400);
       $(".fake-flip").html("").removeClass("flip");
       $(".open").html('<img src="' + card.url + '">');
       resolve();
-    }, 1300);
+    }, 500);
   })
 }
 
