@@ -86,7 +86,7 @@ img {
   left: 0px;
   top: 0px;
   animation-name: card-activeUp;
-  animation-duration: 0.5s;
+  animation-duration: 0.8s;
   animation-timing-function: ease;
 }
 
@@ -101,7 +101,7 @@ img {
   left: 0px;
   top: 0px;
   animation-name: card-activeDown;
-  animation-duration: 0.5s;
+  animation-duration: 0.8s;
   animation-timing-function: ease;
 }
 
@@ -116,7 +116,7 @@ img {
 }
 
 .sub-card-active {
-  animation: sub-card-active 0.5s linear;
+  animation: sub-card-active 0.8s linear;
   transform-style: preserve-3d;
 }
 
@@ -202,7 +202,7 @@ img {
 .flip {
   width: 1em;
   margin-bottom: 1em;
-  animation: flip 0.5s linear;
+  animation: flip 0.8s linear;
   transform-style: preserve-3d;
   transform-origin: left top;
 }
@@ -224,4 +224,29 @@ img {
 
 .back-img {
   transform: rotateX(180deg);
+}
+
+#start-btn {
+  position: relative;
+  line-height: 20px;
+  width: 100px;
+  margin: 10px auto;
+  color: #fff;
+  cursor: pointer;
+  padding: 7px;
+  border-radius: 5px;
+  text-align: center;
+  background: #fa8072;
+  box-shadow: 0 5px 0 #cd5c5c;
+  font-size: 25px;
+}
+
+#start-btn:hover {
+  opacity: .8;
+}
+
+#start-btn:active {
+  margin-top: 15px;
+  margin-bottom: 0;
+  box-shadow: none;
 }
