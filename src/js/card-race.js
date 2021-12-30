@@ -2,6 +2,8 @@ const PREF = {
   turns: 5
 }
 
+let in_progress = false;
+
 //スタート前の準備
 const pre_start = () => {
   shuffle();
@@ -31,6 +33,8 @@ $(() => {
 $(document).keypress(async(event) => {
   const keycode = (event.keyCode ? event.keyCode : event.which);
   if (keycode == '13') {
+    if (in_progress) return;
+    in_progress = true;
     const card = draw_card();
     await flip_deck_card(card);
     // turn over card on side
@@ -39,6 +43,7 @@ $(document).keypress(async(event) => {
     //refresh table
     refresh_table();
     get_rank();
+    in_progress = false;
   }
 
 });
