@@ -29,7 +29,6 @@ $(() => {
 
 $(() => {
   $('#start-btn').on("click", () => {
-
     console.log('start')
     interval_id = setInterval(main, 2000)
   });
@@ -62,22 +61,33 @@ const main = async() => {
     // turn over card on side
     console.log("turnover");
     await turn_over_side_deck(min_pos);
-    refresh_table();
+    await refresh_table();
     console.log("refresh done");
   } else {
     const card = draw_card();
     await flip_deck_card(card);
-    refresh_table();
-  }
+    await refresh_table();
+    if (cards_on_race.filter((ele) => {
+        return ele.pos == 6;
+      }).length == 4) {
+      await turn_over_side_deck(6);
+      await refresh_table();
+      const dobe = cards_on_race.filter((ele) => {
+        return ele.pos != 6;
+      })
+      console.log(dobe);
 
-  if (cards_in_deck.length == 0) {
-    clearInterval(interval_id);
-  } else if (cards_on_race.filter((card) => {
-      return card.pos == 6;
-    }).length == 4) {
-    await turn_over_side_deck(6);
-    refresh_table();
-    clearInterval(interval_id);
+      $(`th:nth-child(${card.suit+1})`).text("乾杯");
+      $(`th:nth-child(${dobe[0].suit+1})`).text("乾杯");
+
+    }
+
+    if (cards_in_deck.length == 0) {
+      clearInterval(interval_id);
+    }
+
+
+
   }
   in_progress = false;
 }
@@ -125,21 +135,24 @@ const turn_over_side_deck = async(min_pos) => {
 }
 
 const refresh_table = () => {
-  cards_on_race.forEach(async(card) => {
-    const pos = PREF.turns + 2 - card.pos;
-    const pre_pos = PREF.turns + 2 - card.pre_pos;
-    const col = card.suit + 1;
-    if (pos > pre_pos) {
-      $(`#board tbody tr:nth-child(${pre_pos}) td:nth-child(${col}) img`).addClass("card-activeDown");
-      await wait_milliseconds(750);
-      $(`#board tbody tr:nth-child(${pre_pos}) td:nth-child(${col})`).html("");
-    } else if (pos < pre_pos) {
-      $(`#board tbody tr:nth-child(${pre_pos}) td:nth-child(${col}) img`).addClass("card-activeUp");
-      await wait_milliseconds(750);
-      $(`#board tbody tr:nth-child(${pre_pos}) td:nth-child(${col})`).html("");
-    }
-    $(`#board tbody tr:nth-child(${pos}) td:nth-child(${col})`).html('<img src="' + card.url + '">');
-  });
+  return new Promise(async(resolve) => {
+    cards_on_race.forEach(async(card) => {
+      const pos = PREF.turns + 2 - card.pos;
+      const pre_pos = PREF.turns + 2 - card.pre_pos;
+      const col = card.suit + 1;
+      if (pos > pre_pos) {
+        $(`#board tbody tr:nth-child(${pre_pos}) td:nth-child(${col}) img`).addClass("card-activeDown");
+        await wait_milliseconds(750);
+        $(`#board tbody tr:nth-child(${pre_pos}) td:nth-child(${col})`).html("");
+      } else if (pos < pre_pos) {
+        $(`#board tbody tr:nth-child(${pre_pos}) td:nth-child(${col}) img`).addClass("card-activeUp");
+        await wait_milliseconds(750);
+        $(`#board tbody tr:nth-child(${pre_pos}) td:nth-child(${col})`).html("");
+      }
+      $(`#board tbody tr:nth-child(${pos}) td:nth-child(${col})`).html('<img src="' + card.url + '">');
+    });
+    resolve();
+  })
 }
 
 // true 誰かがすでにゴール済
