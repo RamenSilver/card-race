@@ -6,10 +6,10 @@ const SUIT = {
   HEARTS: 3,
 }
 let cards_on_race = [
-  { "url": "../../static/torannpu-illust1.png", pos: 0, pre_pos: 0, suit: SUIT.SPADE },
-  { "url": "../../static/torannpu-illust14.png", pos: 0, pre_pos: 0, suit: SUIT.CLUB },
-  { "url": "../../static/torannpu-illust27.png", pos: 0, pre_pos: 0, suit: SUIT.DIAMOND },
-  { "url": "../../static/torannpu-illust40.png", pos: 0, pre_pos: 0, suit: SUIT.HEARTS }
+  { "url": "../../static/torannpu-illust1.png", pos: 0, pre_pos: 0, suit: SUIT.SPADE, rank: 99 },
+  { "url": "../../static/torannpu-illust14.png", pos: 0, pre_pos: 0, suit: SUIT.CLUB, rank: 99 },
+  { "url": "../../static/torannpu-illust27.png", pos: 0, pre_pos: 0, suit: SUIT.DIAMOND, rank: 99 },
+  { "url": "../../static/torannpu-illust40.png", pos: 0, pre_pos: 0, suit: SUIT.HEARTS, rank: 99 }
 ];
 
 let cards_in_deck = [
